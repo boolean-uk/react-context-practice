@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, createContext } from 'react'
 import './App.css'
 import CreatePostForm from './components/CreatePostForm'
 import PostList from './components/PostList'
 
+export const PostsContext = createContext()
 function App() {
   const [posts, setPosts] = useState([
     { id: 1, title: 'Hello, world :)' },
@@ -10,14 +11,16 @@ function App() {
   ])
 
   return (
-    <>
+    <PostsContext.Provider value={{posts , setPosts}}>
+
       <header>
-        <CreatePostForm posts={posts} setPosts={setPosts} />
+        <CreatePostForm />
       </header>
       <main>
-        <PostList posts={posts} />
+        <PostList />
       </main>
-    </>
+
+    </PostsContext.Provider>
   )
 }
 
