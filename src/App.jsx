@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import CreatePostForm from './components/CreatePostForm'
 import PostList from './components/PostList'
+import { PostsContext } from './components/PostsContext'
 
 function App() {
   const [posts, setPosts] = useState([
@@ -10,14 +11,16 @@ function App() {
   ])
 
   return (
-    <>
+    <PostsContext.Provider value={ { posts, setPosts } }>
+      
       <header>
         <CreatePostForm posts={posts} setPosts={setPosts} />
       </header>
       <main>
         <PostList posts={posts} />
       </main>
-    </>
+    
+    </PostsContext.Provider>
   )
 }
 
