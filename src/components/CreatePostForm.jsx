@@ -1,7 +1,9 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { PostsContext } from "./PostsContext"
 
-export default function CreatePostForm({ posts, setPosts }) {
+export default function CreatePostForm() {
     const [postTitle, setPostTitle] = useState('')
+    const { posts, setPosts } = useContext(PostsContext)
 
     const handleSubmit = (e) => {
         e.preventDefault()
