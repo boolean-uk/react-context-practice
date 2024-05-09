@@ -1,4 +1,9 @@
-export default function PostList({ posts }) {
+import { useContext } from "react"
+import { PostsContext } from "./PostsContext"
+
+export default function PostList() {
+    const { posts } = useContext(PostsContext)
+
     return (
         <>
             <h2>Here be posts!</h2>
